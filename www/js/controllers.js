@@ -41,7 +41,7 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('PlaylistsCtrl', function($scope) {
+.controller('PlaylistsCtrl', function($scope, $cordovaContacts, $ionicPlatform) {
   $scope.playlists = [
     { title: 'Reggae', id: 1 },
     { title: 'Chill', id: 2 },
@@ -50,6 +50,28 @@ angular.module('starter.controllers', [])
     { title: 'Rap', id: 5 },
     { title: 'Cowbell', id: 6 }
   ];
+
+  function onSuccess(contacts) {
+    console.log('Contact Success');
+    angular.forEach(contacts, function (contact, index) {
+      $scope.playlists.push({
+        title: contact, 
+        id: index + 7
+      });
+    });
+  }
+
+  function onError (error) {
+    alert(error);
+  }
+
+  var options = {};
+  options.multiple = true;
+
+  $ionicPlatform.ready(function(){
+    console.log('ionicPlatform ready!');
+    $cordovaContacts.find(options).then(onSuccess, onError);
+  });
 })
 
 .controller('PlaylistCtrl', function($scope, $stateParams) {
