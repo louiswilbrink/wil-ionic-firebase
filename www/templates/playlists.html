@@ -3,6 +3,7 @@
     <ion-list>
       <ion-item ng-repeat="playlist in playlists" href="#/app/playlists/{{playlist.id}}">
         {{playlist.title}}
+        <p ng-repeat="contact in playlist.title">{{ contact }}</p>
       </ion-item>
     </ion-list>
     <button ng-click="getContacts()">Get Contacts</button>

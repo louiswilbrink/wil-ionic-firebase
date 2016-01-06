@@ -53,10 +53,10 @@ angular.module('starter.controllers', [])
 
   function onSuccess(contacts) {
     console.log('Contact Success');
+    console.log(contacts);
     angular.forEach(contacts, function (contact, index) {
       $scope.playlists.push({
-        title: contact, 
-        id: index + 7
+        title: contact.name.formatted, 
       });
     });
   }
@@ -70,8 +70,11 @@ angular.module('starter.controllers', [])
 
   $ionicPlatform.ready(function(){
     console.log('ionicPlatform ready!');
-    $cordovaContacts.find(options).then(onSuccess, onError);
   });
+
+  $scope.getContacts = function () {
+    $cordovaContacts.find(options).then(onSuccess, onError);
+  }
 })
 
 .controller('PlaylistCtrl', function($scope, $stateParams) {
