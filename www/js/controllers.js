@@ -1,4 +1,4 @@
-angular.module('starter.controllers', [])
+angular.module('intro.controllers', [])
 
 .controller('AppCtrl', function($scope, $ionicModal, $timeout) {
 
@@ -41,7 +41,11 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('PlaylistsCtrl', function($scope, $cordovaContacts, $ionicPlatform) {
+.controller('PlaylistsCtrl', function($scope, $cordovaContacts, $ionicPlatform, Contacts) {
+
+  Contacts.init();
+  console.log(Contacts.getContacts());
+
   $scope.playlists = [
     { title: 'Reggae', id: 1 },
     { title: 'Chill', id: 2 },
@@ -51,6 +55,11 @@ angular.module('starter.controllers', [])
     { title: 'Cowbell', id: 6 }
   ];
 
+  function addNames () {
+    $scope.playlists.push({ title: 'New Playlist 1', id: 17 });
+    $scope.playlists.push({ title: 'New Playlist 2', id: 18 });
+  }
+      
   function onSuccess(contacts) {
     console.log('Contact Success');
     console.log(contacts);
