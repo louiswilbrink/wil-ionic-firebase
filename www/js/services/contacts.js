@@ -4,8 +4,6 @@
 angular.module('intro.services', [])
   .service('Contacts', contactsService);
 
-  console.log('ContactsService');
-
   contactsService.$inject = [];
 
   function contactsService () {
