@@ -41,31 +41,54 @@ angular.module('intro.controllers', [])
   };
 })
 
-.controller('PlaylistsCtrl', function($scope, $cordovaContacts, $ionicPlatform, Contacts) {
+.controller('ContactsListCtrl', function($scope, $cordovaContacts, $ionicPlatform, Contacts) {
 
-  Contacts.init();
-  console.log(Contacts.getContacts());
-
-  $scope.playlists = [
-    { title: 'Reggae', id: 1 },
-    { title: 'Chill', id: 2 },
-    { title: 'Dubstep', id: 3 },
-    { title: 'Indie', id: 4 },
-    { title: 'Rap', id: 5 },
-    { title: 'Cowbell', id: 6 }
+  $scope.contactsList = [
+    { name: 'Bob', phoneNumber: 15551234 },
+    { name: 'Gretchen', phoneNumber: 15551234 },
+    { name: 'Sally', phoneNumber: 15551234 },
+    { name: 'Amos', phoneNumber: 15551234 }
   ];
 
-  function addNames () {
-    $scope.playlists.push({ title: 'New Playlist 1', id: 17 });
-    $scope.playlists.push({ title: 'New Playlist 2', id: 18 });
+  $scope.sendMessage = function (phoneNumber) {
+    console.log('sending a message to ', phoneNumber);
+  };
+
+  function searchByNumberType (phoneNumbers, type) {
+
+    var mobileNumber;
+
+    angular.forEach(phoneNumbers, function (phoneNumber) {
+      if (phoneNumber.type === type) {
+        mobileNumber = phoneNumber.value;
+      }
+    });
+
+    return mobileNumber;
   }
-      
+
+  function getMobileNumber (phoneNumbers) {
+
+    var mobileNumber;
+
+    mobileNumber = searchByNumberType(phoneNumbers, 'mobile');
+
+    if (!mobileNumber) {
+      mobileNumber = searchByNumberType(phoneNumbers, 'home');
+    }
+
+    if (!mobileNumber) {
+      mobileNumber = searchByNumberType(phoneNumbers, 'work');
+    }
+
+    return mobileNumber;
+  }
+
   function onSuccess(contacts) {
-    console.log('Contact Success');
-    console.log(contacts);
     angular.forEach(contacts, function (contact, index) {
-      $scope.playlists.push({
-        title: contact.name.formatted, 
+      $scope.contactsList.push({
+        name: contact.name.formatted, 
+        phoneNumber: getMobileNumber(contact.phoneNumbers)
       });
     });
   }
@@ -87,4 +110,5 @@ angular.module('intro.controllers', [])
 })
 
 .controller('PlaylistCtrl', function($scope, $stateParams) {
+  console.log('In PlaylistCtrl');
 });

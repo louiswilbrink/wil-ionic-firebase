@@ -21,7 +21,7 @@ angular.module('intro.services', [])
             region: 'CA',
             streetAddress: '165 Davis Street',
             type: 'work'
-          }]
+          }],
           name: {
             familyName: 'Bell',
             formattedName: 'Kate Bell',
