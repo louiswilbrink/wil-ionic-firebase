@@ -27,7 +27,7 @@ angular.module('intro', ['ionic', 'intro.controllers.contactsList',
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
 
-    .state('app', {
+  .state('app', {
     url: '/app',
     abstract: true,
     templateUrl: 'templates/menu.html',
@@ -42,7 +42,6 @@ angular.module('intro', ['ionic', 'intro.controllers.contactsList',
       }
     }
   })
-
   .state('app.browse', {
       url: '/browse',
       views: {
@@ -51,16 +50,15 @@ angular.module('intro', ['ionic', 'intro.controllers.contactsList',
         }
       }
     })
-    .state('app.contactsList', {
-      url: '/contacts-list',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/contactsList.html',
-          controller: 'ContactsListCtrl'
-        }
+  .state('app.contactsList', {
+    url: '/contacts-list',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/contactsList.html',
+        controller: 'ContactsListCtrl'
       }
-    })
-
+    }
+  })
   .state('app.single', {
     url: '/playlists/:playlistId',
     views: {
