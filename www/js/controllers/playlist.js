@@ -1,4 +1,4 @@
-angular.module('intro.controllers.playlist', [])
+angular.module('controllers.playlist', [])
 
 .controller('PlaylistCtrl', function($scope, $stateParams) {
   console.log('In PlaylistCtrl');

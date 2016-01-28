@@ -4,11 +4,13 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('intro', ['ionic', 'intro.controllers.contactsList', 
-    'intro.controllers.appCtrl', 'intro.controllers.playlist', 
-    'intro.services', 'ngCordova'])
+angular.module('intro', ['ionic', 'controllers.contactsList', 
+    'controllers.appCtrl', 'controllers.playlist', 
+    'services.contacts', 'services.dummy', 'ngCordova'])
 
 .run(function($ionicPlatform) {
+  //$cordovaSplashScreen.show();
+
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -55,7 +57,12 @@ angular.module('intro', ['ionic', 'intro.controllers.contactsList',
     views: {
       'menuContent': {
         templateUrl: 'templates/contactsList.html',
-        controller: 'ContactsListCtrl'
+        controller: 'ContactsListCtrl',
+        resolve: {
+          louis: function (Dummy) {
+            return Dummy.timeout();
+          }
+        }
       }
     }
   })

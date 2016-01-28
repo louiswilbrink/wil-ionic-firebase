@@ -1,5 +1,7 @@
-angular.module('intro.controllers.contactsList', [])
-.controller('ContactsListCtrl', function($scope, $cordovaContacts, $ionicPlatform, Contacts, $cordovaSms) {
+angular.module('controllers.contactsList', [])
+.controller('ContactsListCtrl', function($scope, $cordovaContacts, $ionicPlatform, Contacts, $cordovaSms, louis) {
+
+  console.log('ContactsListCtrl', louis);
 
   $scope.contactsList = [
     { name: 'Bob', phoneNumber: 15551234 },
