@@ -9,7 +9,6 @@ angular.module('intro', ['ionic', 'controllers.contactsList',
     'services.contacts', 'services.dummy', 'ngCordova'])
 
 .run(function($ionicPlatform) {
-  //$cordovaSplashScreen.show();
 
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard

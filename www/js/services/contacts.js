@@ -39,6 +39,9 @@ angular.module('services.contacts', [])
             id: 1
           }]
         }]
+      },
+      getPhotoUrl: function (contactId) {
+        return 'photourl'
       }
     }
   };
