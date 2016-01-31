@@ -1,8 +1,7 @@
 <ion-view view-title="ContactsList">
   <ion-content>
     <ion-list>
-      <ion-item ng-repeat="contact in contactsList" ng-click="sendMessage(contact.phoneNumber)">
-      <!--<ion-item ng-repeat="contact in contactsList" ng-click="sendMessage(contact.number)" href="#/app/playlists/{{contact.phoneNumber}}">-->
+      <ion-item ng-repeat="contact in contactsList" ng-click="addContact(contact)">
         <p>{{ contact.name }}</p>
         <p>{{ contact.phoneNumber }}</p>
       </ion-item>

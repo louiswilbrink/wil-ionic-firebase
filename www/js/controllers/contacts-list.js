@@ -1,7 +1,6 @@
 angular.module('controllers.contactsList', [])
-.controller('ContactsListCtrl', function($scope, $cordovaContacts, $ionicPlatform, Contacts, $cordovaSms, louis) {
-
-  console.log('ContactsListCtrl', louis);
+.controller('ContactsListCtrl', function($scope, $cordovaContacts, 
+  $ionicPlatform, Contacts, Introduction) {
 
   $scope.contactsList = [
     { name: 'Bob', phoneNumber: 15551234 },
@@ -10,17 +9,7 @@ angular.module('controllers.contactsList', [])
     { name: 'Amos', phoneNumber: 15551234 }
   ];
 
-  $scope.sendMessage = function (phoneNumber) {
-    console.log('sending a message to ', phoneNumber);
-
-    $cordovaSms
-      .send('9737681848', 'Hey this is working!', {})
-      .then(function() {
-        console.log('sent!');
-      }, function(error) {
-        console.log(error);
-      });
-  };
+  $scope.addContact = Introduction.addContact;
 
   function searchByNumberType (phoneNumbers, type) {
 
