@@ -55,7 +55,7 @@ angular.module('intro', ['ionic', 'controllers.contactsList',
     url: '/contacts-list',
     views: {
       'menuContent': {
-        templateUrl: 'templates/contactsList.html',
+        templateUrl: 'templates/contacts-list.html',
         controller: 'ContactsListCtrl',
         resolve: {
           louis: function (Dummy) {
