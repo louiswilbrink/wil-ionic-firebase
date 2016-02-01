@@ -1,6 +1,6 @@
 angular.module('controllers.contactsList', [])
 .controller('ContactsListCtrl', function($scope, $cordovaContacts, 
-  $ionicPlatform, Contacts, Introduction) {
+  $ionicPlatform, Contacts, Introduction, localStorageService) {
 
   $scope.contactsList = [
     { name: 'Bob', phoneNumber: 15551234 },
@@ -42,6 +42,7 @@ angular.module('controllers.contactsList', [])
   }
 
   function onSuccess(contacts) {
+    localStorageService.set('contacts', contacts);
     angular.forEach(contacts, function (contact, index) {
       $scope.contactsList.push({
         name: contact.name.formatted, 

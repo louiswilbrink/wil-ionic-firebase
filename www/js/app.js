@@ -6,7 +6,7 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('intro', ['ionic', 'controllers.contactsList', 
     'controllers.appCtrl', 'controllers.playlist', 'services.introduction',
-    'services.contacts', 'services.dummy', 'ngCordova'])
+    'services.contacts', 'services.dummy', 'ngCordova', 'LocalStorageModule'])
 
 .run(function($ionicPlatform) {
 
@@ -25,9 +25,10 @@ angular.module('intro', ['ionic', 'controllers.contactsList',
   });
 })
 
-.config(function($stateProvider, $urlRouterProvider) {
-  $stateProvider
+.config(function($stateProvider, $urlRouterProvider, localStorageServiceProvider) {
+  localStorageServiceProvider.setPrefix('introgo');
 
+  $stateProvider
   .state('app', {
     url: '/app',
     abstract: true,
