@@ -59,8 +59,14 @@ angular.module('intro', ['ionic', 'controllers.contactsList',
         templateUrl: 'templates/contacts-list.html',
         controller: 'ContactsListCtrl',
         resolve: {
-          louis: function (Dummy) {
-            return Dummy.timeout();
+          contacts: function (Contacts) {
+            // Provide contacts - if not on a phone, load test data.
+            if (ionic.Platform.isIOS()) {
+              return Contacts.getContacts();
+            }
+            else {
+              return Contacts.getTestContacts();
+            }
           }
         }
       }

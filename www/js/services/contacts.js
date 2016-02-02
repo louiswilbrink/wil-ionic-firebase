@@ -12,36 +12,70 @@ angular.module('services.contacts', [])
       init: function () {
         console.log('Hey!');
       },
+      getTestContacts: function () {
+        return [{
+          "id": 201,
+          "rawId": null,
+          "displayName": null,
+          "name": {
+            "givenName": "Alex",
+            "honorificSuffix": null,
+            "formatted": "Alex Konecky",
+            "middleName": null,
+            "familyName": "Konecky", 
+            "honorificPrefix": null
+          },
+          "nickname": null, 
+          "phoneNumbers":[{
+            "value": "+1 (973) 368-5577",
+            "pref": false,
+            "id": 0, 
+            "type": "mobile"
+          }],
+          "emails": null,
+          "addresses": null,
+          "ims": null, 
+          "organizations": null,
+          "birthday": null,
+          "note": null,
+          "photos": null, 
+          "categories": null,
+          "urls": null
+        }]
+      },
       getContacts: function () {
         return [{
-          address: [{
-            postalCode: '94010',
-            region: 'CA',
-            streetAddress: '165 Davis Street',
-            type: 'work'
-          }],
-          name: {
-            familyName: 'Bell',
-            formattedName: 'Kate Bell',
-            givenName: 'Kate'
+          "id": 201,
+          "rawId": null,
+          "displayName": null,
+          "name": {
+            "givenName": "Matt",
+            "honorificSuffix": null,
+            "formatted": "Matt Konecky",
+            "middleName": null,
+            "familyName": "Konecky", 
+            "honorificPrefix": null
           },
-          nickname: 'Kate-dawg',
-          birthday: 254145600000,
-          emails: [{
-            type: 'work',
-            value: 'kate-bell@mac.com',
-            pref: false,
-            id: 0
-          },{
-            type: 'work',
-            value: 'www.icloud.com',
-            pref: false,
-            id: 1
-          }]
+          "nickname": null, 
+          "phoneNumbers":[{
+            "value": "+1 (973) 555-1234",
+            "pref": false,
+            "id": 0, 
+            "type": "mobile"
+          }],
+          "emails": null,
+          "addresses": null,
+          "ims": null, 
+          "organizations": null,
+          "birthday": null,
+          "note": null,
+          "photos": null, 
+          "categories": null,
+          "urls": null
         }]
       },
       getPhotoUrl: function (contactId) {
-        return 'photourl'
+        return 'photoUrl';
       }
     }
   };

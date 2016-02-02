@@ -1,6 +1,6 @@
 angular.module('controllers.contactsList', [])
 .controller('ContactsListCtrl', function($scope, $cordovaContacts, 
-  $ionicPlatform, Contacts, Introduction, localStorageService) {
+  $ionicPlatform, Contacts, Introduction, localStorageService, contacts) {
 
   $scope.contactsList = [
     { name: 'Bob', phoneNumber: 15551234 },
