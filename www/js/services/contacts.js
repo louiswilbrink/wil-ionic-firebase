@@ -4,9 +4,9 @@
 angular.module('services.contacts', [])
   .service('Contacts', contactsService);
 
-  contactsService.$inject = [];
+  contactsService.$inject = ['localStorageService', '$cordovaContacts'];
 
-  function contactsService () {
+  function contactsService (localStorageService, $cordovaContacts) {
 
     return {
       init: function () {
@@ -18,16 +18,16 @@ angular.module('services.contacts', [])
           "rawId": null,
           "displayName": null,
           "name": {
-            "givenName": "Alex",
+            "givenName": "Louis",
             "honorificSuffix": null,
-            "formatted": "Alex Konecky",
+            "formatted": "Louis Test",
             "middleName": null,
-            "familyName": "Konecky", 
+            "familyName": "Test", 
             "honorificPrefix": null
           },
           "nickname": null, 
           "phoneNumbers":[{
-            "value": "+1 (973) 368-5577",
+            "value": "+1 (720) 295-1791",
             "pref": false,
             "id": 0, 
             "type": "mobile"
@@ -44,35 +44,19 @@ angular.module('services.contacts', [])
         }]
       },
       getContacts: function () {
-        return [{
-          "id": 201,
-          "rawId": null,
-          "displayName": null,
-          "name": {
-            "givenName": "Matt",
-            "honorificSuffix": null,
-            "formatted": "Matt Konecky",
-            "middleName": null,
-            "familyName": "Konecky", 
-            "honorificPrefix": null
-          },
-          "nickname": null, 
-          "phoneNumbers":[{
-            "value": "+1 (973) 555-1234",
-            "pref": false,
-            "id": 0, 
-            "type": "mobile"
-          }],
-          "emails": null,
-          "addresses": null,
-          "ims": null, 
-          "organizations": null,
-          "birthday": null,
-          "note": null,
-          "photos": null, 
-          "categories": null,
-          "urls": null
-        }]
+        var options = {};
+        options.multiple = true;
+
+        function onSuccess(contacts) {
+          localStorageService.set('contacts', contacts);
+          return contacts;
+        }
+
+        function onError (error) {
+          return error;
+        }
+
+        return $cordovaContacts.find(options).then(onSuccess, onError);
       },
       getPhotoUrl: function (contactId) {
         return 'photoUrl';

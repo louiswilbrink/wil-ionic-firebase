@@ -1,6 +1,6 @@
 angular.module('controllers.contactsList', [])
-.controller('ContactsListCtrl', function($scope, $cordovaContacts, 
-  $ionicPlatform, Contacts, Introduction, localStorageService, contacts) {
+.controller('ContactsListCtrl', function($scope, $ionicPlatform, Contacts, 
+  Introduction, contacts) {
 
   $scope.contactsList = [
     { name: 'Bob', phoneNumber: 15551234 },
@@ -9,7 +9,7 @@ angular.module('controllers.contactsList', [])
     { name: 'Amos', phoneNumber: 15551234 }
   ];
 
-  $scope.addContact = Introduction.addContact;
+  console.log(contacts);
 
   function searchByNumberType (phoneNumbers, type) {
 
@@ -41,29 +41,21 @@ angular.module('controllers.contactsList', [])
     return mobileNumber;
   }
 
-  function onSuccess(contacts) {
-    localStorageService.set('contacts', contacts);
-    angular.forEach(contacts, function (contact, index) {
-      $scope.contactsList.push({
-        name: contact.name.formatted, 
-        phoneNumber: getMobileNumber(contact.phoneNumbers)
-      });
+  angular.forEach(contacts, function (contact, index) {
+    $scope.contactsList.push({
+      name: contact.name.formatted, 
+      phoneNumber: getMobileNumber(contact.phoneNumbers)
     });
-  }
-
-  function onError (error) {
-    alert(error);
-  }
-
-  var options = {};
-  options.multiple = true;
-
-  $ionicPlatform.ready(function(){
-    console.log('ionicPlatform ready!');
   });
 
+  $scope.addContact = Introduction.addContact;
+
+  //$ionicPlatform.ready(function(){
+    //console.log('ionicPlatform ready!');
+  //});
+
   $scope.getContacts = function () {
-    $cordovaContacts.find(options).then(onSuccess, onError);
+    console.log('delete this');
   }
 });
 

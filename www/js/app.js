@@ -59,14 +59,21 @@ angular.module('intro', ['ionic', 'controllers.contactsList',
         templateUrl: 'templates/contacts-list.html',
         controller: 'ContactsListCtrl',
         resolve: {
-          contacts: function (Contacts) {
-            // Provide contacts - if not on a phone, load test data.
-            if (ionic.Platform.isIOS()) {
-              return Contacts.getContacts();
-            }
-            else {
-              return Contacts.getTestContacts();
-            }
+          contacts: function (Contacts, $q, $timeout, $ionicPlatform) {
+            var deferred = $q.defer();
+
+            $ionicPlatform.ready(function () {
+
+              // Provide contacts - if not on a phone, load test data.
+              if (ionic.Platform.isIOS()) {
+                deferred.resolve(Contacts.getContacts());
+              }
+              else {
+                deferred.resolve(Contacts.getTestContacts());
+              }
+            });
+
+            return deferred.promise;
           }
         }
       }
