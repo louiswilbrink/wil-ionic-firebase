@@ -8,7 +8,7 @@ angular.module('services.introduction', [])
 
   function IntroductionService () {
 
-    var connections = [],
+    var people = [],
         message = '';
 
     return {
@@ -16,7 +16,10 @@ angular.module('services.introduction', [])
         console.log('init');
       },
       addContact: function (contact) {
+        console.log(contact);
         console.log('adding contact name/photo/number to introduction');
+        people.push(contact);
+        console.log(people);
       },
       clear: function () {
         console.log('clear connections and message');
