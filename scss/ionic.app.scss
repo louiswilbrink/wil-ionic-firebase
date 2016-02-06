@@ -21,3 +21,17 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
 
+
+// Application Style
+// TODO: refactor into separate files corresponding to pages/components.
+
+// contacts-list.css.scss
+
+.contacts-list-container {
+  .introductees .introductee {
+    background: lightblue;
+  }
+}
+
+
+

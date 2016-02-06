@@ -1,5 +1,10 @@
-<ion-view view-title="ContactsList">
+<ion-view view-title="ContactsList" class="contacts-list-container">
   <ion-content>
+    <ion-list class="introductees">
+      <ion-item class="introductee" ng-repeat="contact in introductees" ng-click="removeContact(contact)">
+        <p>{{ contact.name }}</p>
+      </ion-item>
+    </ion-list>
     <ion-list>
       <ion-item ng-repeat="contact in contacts" ng-click="addContact(contact)">
         <p>{{ contact.name }}</p>

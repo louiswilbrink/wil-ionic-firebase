@@ -4,22 +4,29 @@
 angular.module('services.introduction', [])
   .service('Introduction', IntroductionService);
 
-  IntroductionService.$inject = [];
+  IntroductionService.$inject = ['Contacts'];
 
-  function IntroductionService () {
+  function IntroductionService (Contacts) {
 
-    var people = [],
+    var introductees = [],
         message = '';
 
     return {
       init: function () {
         console.log('init');
       },
+      introductees: introductees,
       addContact: function (contact) {
-        console.log(contact);
-        console.log('adding contact name/photo/number to introduction');
-        people.push(contact);
-        console.log(people);
+        introductees.push(contact);
+      },
+      removeContact: function (contact) {
+        angular.forEach(introductees, function (introductee, index) {
+          if (introductee.phone === contact.phone) {
+            introductees.splice(index, 1);
+          }
+        });
+
+        console.log(introductees);
       },
       clear: function () {
         console.log('clear connections and message');
