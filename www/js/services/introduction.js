@@ -17,16 +17,24 @@ angular.module('services.introduction', [])
       },
       introductees: introductees,
       addContact: function (contact) {
+        // If the contact was already selected, don't do anything.
+        if (contact.isSelected) {
+          return;
+        }
+
+        // Add contact as a introductee and set their selected status.
         introductees.push(contact);
+        Contacts.select(contact);
       },
       removeContact: function (contact) {
+        // Search for this contact in introductees.  Match by phone number.
         angular.forEach(introductees, function (introductee, index) {
           if (introductee.phone === contact.phone) {
             introductees.splice(index, 1);
           }
         });
 
-        console.log(introductees);
+        Contacts.deselect(contact);
       },
       clear: function () {
         console.log('clear connections and message');

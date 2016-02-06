@@ -9722,3 +9722,6 @@ a.button {
 
 .contacts-list-container .introductees .introductee {
   background: lightblue; }
+
+.contacts-list-container .grey-out {
+  opacity: 0.5; }

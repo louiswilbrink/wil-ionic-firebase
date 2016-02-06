@@ -90,14 +90,14 @@ angular.module('services.contacts', [])
           "name": {
             "givenName": "Louis",
             "honorificSuffix": null,
-            "formatted": "Louis Test 2",
+            "formatted": "Louis Wilbrink",
             "middleName": null,
-            "familyName": "Test 2", 
+            "familyName": "Wilbrink", 
             "honorificPrefix": null
           },
           "nickname": null, 
           "phoneNumbers":[{
-            "value": "+1 (720) 295-1791",
+            "value": "+1 (973) 768-1848",
             "pref": false,
             "id": 0, 
             "type": "mobile"
@@ -116,6 +116,20 @@ angular.module('services.contacts', [])
         simplifyContacts(testContacts);
 
         return contacts;
+      },
+      select: function (selectedContact) {
+        angular.forEach(contacts, function (contact) {
+          if (contact.phone === selectedContact.phone) {
+            contact.isSelected = true;
+          }
+        });
+      },
+      deselect: function (deselectedContact) {
+        angular.forEach(contacts, function (contact) {
+          if (contact.phone === deselectedContact.phone) {
+            contact.isSelected = false;
+          }
+        });
       },
       getContacts: function () {
         var options = {};
