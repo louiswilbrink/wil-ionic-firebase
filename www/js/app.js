@@ -44,11 +44,11 @@ angular.module('intro', ['ionic', 'controllers.contactsList',
       }
     }
   })
-  .state('app.browse', {
-      url: '/browse',
+  .state('app.messages', {
+      url: '/messages',
       views: {
         'menuContent': {
-          templateUrl: 'templates/browse.html'
+          templateUrl: 'templates/messages.html'
         }
       }
     })
@@ -60,16 +60,17 @@ angular.module('intro', ['ionic', 'controllers.contactsList',
         controller: 'ContactsListCtrl',
         resolve: {
           contacts: function (Contacts, $q, $timeout, $ionicPlatform) {
+            Contacts.clear();
             var deferred = $q.defer();
 
             $ionicPlatform.ready(function () {
 
               // Provide contacts - if not on a phone, load test data.
               if (ionic.Platform.isIOS()) {
-                deferred.resolve(Contacts.getContacts());
+                deferred.resolve(Contacts.loadContacts());
               }
               else {
-                deferred.resolve(Contacts.getTestContacts());
+                deferred.resolve(Contacts.loadTestContacts());
               }
             });
 

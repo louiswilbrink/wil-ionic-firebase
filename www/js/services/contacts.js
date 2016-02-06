@@ -51,10 +51,10 @@ angular.module('services.contacts', [])
     }
 
     return {
-      init: function () {
-        console.log('Hey!');
+      clear: function () {
+        contacts.length = 0;
       },
-      getTestContacts: function () {
+      loadTestContacts: function () {
         var testContacts = [{
           "id": 201,
           "rawId": null,
@@ -131,7 +131,7 @@ angular.module('services.contacts', [])
           }
         });
       },
-      getContacts: function () {
+      loadContacts: function () {
         var options = {};
         options.multiple = true;
 
