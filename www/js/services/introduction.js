@@ -4,16 +4,13 @@
 angular.module('services.introduction', [])
   .service('Introduction', IntroductionService);
 
-  IntroductionService.$inject = ['Contacts'];
+  IntroductionService.$inject = ['Contacts', 'Compose'];
 
-  function IntroductionService (Contacts) {
+  function IntroductionService (Contacts, Compose) {
 
     var message, introductees = []
 
     return {
-      init: function () {
-        console.log('init');
-      },
       introductees: introductees,
       addContact: function (contact) {
         // If the contact was already selected, don't do anything.
@@ -38,10 +35,8 @@ angular.module('services.introduction', [])
       clear: function () {
         console.log('clear connections and message');
       },
-      compose: function () {
-        console.log('inserting names into custom message');
-        message = 'hi Louis and Test, you should meet!';
-        return message;
+      compose: function (unpopulatedMessage, introductees) {
+        message = Compose.message(unpopulatedMessage, introductees);
       },
       send: function () {
         $cordovaSms.send('9737681848', 'Hey this is working!', {})

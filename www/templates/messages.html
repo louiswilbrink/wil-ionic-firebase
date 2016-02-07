@@ -1,6 +1,6 @@
 <ion-view view-title="Messages" class="messages-list-container">
   <ion-content>
-    <div ng-repeat="message in messages" class="message card" ng-click="compose()">
+    <div ng-repeat="message in messages" class="message card" ng-click="compose(message, introductees)">
       <div class="item item-text-wrap">
         {{ message.text | populate:message:introductees }}
       </div>
