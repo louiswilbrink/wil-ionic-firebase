@@ -8,8 +8,7 @@ angular.module('services.introduction', [])
 
   function IntroductionService (Contacts) {
 
-    var introductees = [],
-        message = '';
+    var introductees = [];
 
     return {
       init: function () {

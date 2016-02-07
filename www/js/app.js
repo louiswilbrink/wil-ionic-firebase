@@ -5,8 +5,9 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
 angular.module('intro', ['ionic', 'controllers.contactsList', 
-    'controllers.appCtrl', 'controllers.playlist', 'services.introduction',
-    'services.contacts', 'services.dummy', 'ngCordova', 'LocalStorageModule'])
+    'controllers.messages', 'controllers.appCtrl', 'controllers.playlist', 
+    'services.introduction', 'services.contacts', 'services.messages', 
+    'services.dummy', 'ngCordova', 'LocalStorageModule', 'filters.populate'])
 
 .run(function($ionicPlatform) {
 
@@ -48,6 +49,7 @@ angular.module('intro', ['ionic', 'controllers.contactsList',
       url: '/messages',
       views: {
         'menuContent': {
+          controller: 'MessagesCtrl',
           templateUrl: 'templates/messages.html'
         }
       }
