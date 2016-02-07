@@ -54,6 +54,7 @@ angular.module('services.contacts', [])
       clear: function () {
         contacts.length = 0;
       },
+      contacts: contacts,
       loadTestContacts: function () {
         var testContacts = [{
           "id": 201,

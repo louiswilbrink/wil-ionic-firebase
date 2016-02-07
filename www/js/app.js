@@ -49,8 +49,17 @@ angular.module('intro', ['ionic', 'controllers.contactsList',
       url: '/messages',
       views: {
         'menuContent': {
+          templateUrl: 'templates/messages.html',
           controller: 'MessagesCtrl',
-          templateUrl: 'templates/messages.html'
+          // For testing only, remove for production.
+          resolve: {
+            introductees: function (Contacts, Introduction) {
+              var contacts = Contacts.loadTestContacts();
+              Introduction.addContact(contacts[0]);
+              Introduction.addContact(contacts[1]);
+              return 0;
+            }
+          }
         }
       }
     })
