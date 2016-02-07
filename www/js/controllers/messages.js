@@ -3,5 +3,6 @@ angular.module('controllers.messages', [])
 
   $scope.messages = Messages.messages;
   $scope.introductees = Introduction.introductees;
+  $scope.compose = Introduction.compose;
 });
 

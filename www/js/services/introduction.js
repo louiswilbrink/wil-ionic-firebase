@@ -8,7 +8,7 @@ angular.module('services.introduction', [])
 
   function IntroductionService (Contacts) {
 
-    var introductees = [];
+    var message, introductees = []
 
     return {
       init: function () {
@@ -40,6 +40,8 @@ angular.module('services.introduction', [])
       },
       compose: function () {
         console.log('inserting names into custom message');
+        message = 'hi Louis and Test, you should meet!';
+        return message;
       },
       send: function () {
         $cordovaSms.send('9737681848', 'Hey this is working!', {})

@@ -7,7 +7,8 @@
 angular.module('intro', ['ionic', 'controllers.contactsList', 
     'controllers.messages', 'controllers.appCtrl', 'controllers.playlist', 
     'services.introduction', 'services.contacts', 'services.messages', 
-    'services.dummy', 'ngCordova', 'LocalStorageModule', 'filters.populate'])
+    'services.dummy', 'services.compose', 'ngCordova', 'LocalStorageModule', 
+    'filters.populate'])
 
 .run(function($ionicPlatform) {
 
