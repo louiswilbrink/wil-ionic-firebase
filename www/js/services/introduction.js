@@ -12,6 +12,7 @@ angular.module('services.introduction', [])
 
     return {
       introductees: introductees,
+      message: message,
       addContact: function (contact) {
         // If the contact was already selected, don't do anything.
         if (contact.isSelected) {

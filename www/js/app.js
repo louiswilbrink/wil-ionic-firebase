@@ -6,9 +6,9 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('intro', ['ionic', 'controllers.contactsList', 
     'controllers.messages', 'controllers.appCtrl', 'controllers.playlist', 
-    'services.introduction', 'services.contacts', 'services.messages', 
-    'services.dummy', 'services.compose', 'ngCordova', 'LocalStorageModule', 
-    'filters.populate'])
+    'controllers.confirmation', 'services.introduction', 'services.contacts', 
+    'services.messages', 'services.dummy', 'services.compose', 'ngCordova', 
+    'LocalStorageModule', 'filters.populate'])
 
 .run(function($ionicPlatform) {
 
@@ -38,11 +38,22 @@ angular.module('intro', ['ionic', 'controllers.contactsList',
     controller: 'AppCtrl'
   })
 
-  .state('app.search', {
-    url: '/search',
+  .state('app.confirmation', {
+    url: '/confirmation',
     views: {
       'menuContent': {
-        templateUrl: 'templates/search.html'
+        templateUrl: 'templates/confirmation.html',
+        controller: 'ConfirmationCtrl',
+        resolve: {
+          introduction: function (Introduction, $state) {
+            var introduction = {
+              introductees: Introduction.introductees,
+              message: Introduction.message
+            }
+
+            return introduction;
+          }
+        }
       }
     }
   })
