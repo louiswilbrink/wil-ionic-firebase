@@ -36,8 +36,12 @@ angular.module('services.introduction', [])
       clear: function () {
         console.log('clear connections and message');
       },
-      compose: function (unpopulatedMessage, introductees) {
-        message = Compose.message(unpopulatedMessage, introductees);
+      compose: function (unpopulatedMessage) {
+        if (introductees.length === 0) {
+          return; // No introductees exists.
+        }
+
+        this.message = Compose.message(unpopulatedMessage, introductees);
       },
       send: function () {
         $cordovaSms.send('9737681848', 'Hey this is working!', {})
