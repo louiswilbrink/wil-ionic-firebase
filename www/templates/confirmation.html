@@ -3,14 +3,14 @@
     <h1>Confirmation</h1>
     <h2>Introductees</h2>
     <ul>
-      <li ng-repeat="introductees in introduction.introductees">
-        {{ introductees.name }}
+      <li ng-repeat="introductee in introductees">
+        {{ introductee.name }}
       </li>
     </ul>
     <h2>Message</h2>
     <div class="message card">
       <div class="item item-text-wrap">
-        {{ introduction.message }}
+        {{ message }}
       </div>
     </div>
   </ion-content>

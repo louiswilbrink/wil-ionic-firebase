@@ -1,21 +1,26 @@
 angular.module('controllers.confirmation', [])
-.controller('ConfirmationCtrl', function($scope, $state, introduction, Introduction) {
+.controller('ConfirmationCtrl', function($scope, $state, Introduction) {
+  
+  $scope.$on('$ionicView.beforeEnter', function () {
 
-  // Redirect if missing introductees or message.
-  if (introduction.introductees.length === 0) {
+    // Initialize $scope with Introduction information.
+    $scope.introductees = Introduction.introductees;
+    $scope.message = Introduction.message;
 
-    // If no introductees, go to contacts page.
-    $state.go('app.contactsList');
+    // Redirect if missing introductees or message.
+    if ($scope.introductees.length === 0) {
 
-  } else if (!introduction.message) {
+      // If no introductees, go to contacts page.
+      $state.go('app.contactsList');
 
-    // If no message defined, go to messages page.
-    $state.go('app.messages');
+    } else if (!$scope.message) {
 
-  }
+      // If no message defined, go to messages page.
+      $state.go('app.messages');
 
-  $scope.introduction = introduction;
+    }
 
-  $scope.sendIntroduction = Introduction.send;
+    $scope.sendIntroduction = Introduction.send;
+  });
 
 });

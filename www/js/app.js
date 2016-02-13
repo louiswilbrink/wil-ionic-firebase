@@ -43,17 +43,7 @@ angular.module('intro', ['ionic', 'controllers.contactsList',
     views: {
       'menuContent': {
         templateUrl: 'templates/confirmation.html',
-        controller: 'ConfirmationCtrl',
-        resolve: {
-          introduction: function (Introduction, $state) {
-            var introduction = {
-              introductees: Introduction.introductees,
-              message: Introduction.message
-            }
-
-            return introduction;
-          }
-        }
+        controller: 'ConfirmationCtrl'
       }
     }
   })
@@ -62,16 +52,7 @@ angular.module('intro', ['ionic', 'controllers.contactsList',
       views: {
         'menuContent': {
           templateUrl: 'templates/messages.html',
-          controller: 'MessagesCtrl',
-          // For testing only, remove for production.
-          resolve: {
-            introductees: function (Contacts, Introduction) {
-              var contacts = Contacts.loadTestContacts();
-              Introduction.addContact(contacts[0]);
-              Introduction.addContact(contacts[1]);
-              return 0;
-            }
-          }
+          controller: 'MessagesCtrl'
         }
       }
     })
