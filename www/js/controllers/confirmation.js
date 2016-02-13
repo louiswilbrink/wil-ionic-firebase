@@ -1,5 +1,5 @@
 angular.module('controllers.confirmation', [])
-.controller('ConfirmationCtrl', function($scope, $state, introduction) {
+.controller('ConfirmationCtrl', function($scope, $state, introduction, Introduction) {
 
   // Redirect if missing introductees or message.
   if (introduction.introductees.length === 0) {
@@ -15,5 +15,7 @@ angular.module('controllers.confirmation', [])
   }
 
   $scope.introduction = introduction;
+
+  $scope.sendIntroduction = Introduction.send;
 
 });

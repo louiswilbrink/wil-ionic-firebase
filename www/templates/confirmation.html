@@ -1,6 +1,22 @@
 <ion-view view-title="Confirmation">
   <ion-content>
     <h1>Confirmation</h1>
-    {{ introduction }}
+    <h2>Introductees</h2>
+    <ul>
+      <li ng-repeat="introductees in introduction.introductees">
+        {{ introductees.name }}
+      </li>
+    </ul>
+    <h2>Message</h2>
+    <div class="message card">
+      <div class="item item-text-wrap">
+        {{ introduction.message }}
+      </div>
+    </div>
   </ion-content>
+  <a ng-click="sendIntroduction()">
+    <div class="bar bar-footer bar-balanced">
+        <div class="title">Send Introduction</div>
+    </div>
+  </a>
 </ion-view>
