@@ -6,7 +6,7 @@
       </ion-item>
     </ion-list>
     <ion-list>
-      <ion-item ng-repeat="contact in contacts" ng-class="{ 'grey-out': contact.isSelected }"ng-click="addContact(contact)">
+      <ion-item ng-repeat="contact in contacts | orderBy:'name'" ng-class="{ 'grey-out': contact.isSelected }"ng-click="addContact(contact)">
         <p>{{ contact.name }}</p>
         <p>{{ contact.phone }}</p>
       </ion-item>

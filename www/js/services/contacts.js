@@ -55,17 +55,17 @@ angular.module('services.contacts', [])
         contacts.length = 0;
       },
       contacts: contacts,
-      loadTestContacts: function () {
-        var testContacts = [{
+      testContacts: function () {
+        return [{
           "id": 201,
           "rawId": null,
           "displayName": null,
           "name": {
-            "givenName": "Louis",
+            "givenName": "AA Xavier",
             "honorificSuffix": null,
-            "formatted": "Louis Test",
+            "formatted": "AA Xavier Fontaine",
             "middleName": null,
-            "familyName": "Test", 
+            "familyName": "Fontaine", 
             "honorificPrefix": null
           },
           "nickname": null, 
@@ -89,9 +89,9 @@ angular.module('services.contacts', [])
           "rawId": null,
           "displayName": null,
           "name": {
-            "givenName": "Louis",
+            "givenName": "AA Louis",
             "honorificSuffix": null,
-            "formatted": "Louis Wilbrink",
+            "formatted": "AA Louis Wilbrink",
             "middleName": null,
             "familyName": "Wilbrink", 
             "honorificPrefix": null
@@ -113,6 +113,9 @@ angular.module('services.contacts', [])
           "categories": null,
           "urls": null
         }];
+      },
+      loadTestContacts: function () {
+        var testContacts = this.testContacts();
 
         simplifyContacts(testContacts);
 
@@ -133,12 +136,23 @@ angular.module('services.contacts', [])
         });
       },
       loadContacts: function () {
+        self = this;
+        
         var options = {};
         options.multiple = true;
 
         function onSuccess(iosContacts) {
           localStorageService.set('contacts', contacts);
+
+          var testContacts = self.testContacts();
+
+          // Add test contacts.  REMOVE BEFORE PRODUCTION.
+          angular.forEach(testContacts, function (testContact) {
+            iosContacts.push(testContact);
+          });
+
           simplifyContacts(iosContacts);
+
           return contacts;
         }
 
