@@ -35,6 +35,8 @@ angular.module('services.introduction', [])
       },
       clear: function () {
         console.log('clear connections and message');
+        introductees.length = 0;
+        message = '';
       },
       compose: function (unpopulatedMessage) {
         if (introductees.length === 0) {

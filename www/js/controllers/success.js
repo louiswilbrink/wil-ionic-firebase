@@ -7,6 +7,7 @@ angular.module('controllers.success', [])
     $scope.introductees = Introduction.introductees;
 
     $scope.navigate = function (state) {
+      Introduction.clear();
       $state.go(state);
     };
   });
