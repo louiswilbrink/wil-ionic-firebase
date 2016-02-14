@@ -44,8 +44,14 @@ angular.module('services.introduction', [])
         this.message = Compose.message(unpopulatedMessage, introductees);
       },
       send: function () {
-        var self = this;
-        $cordovaSms.send('9737681848', self.message, {})
+        var self = this,
+            phoneNumbers = [];
+
+        angular.forEach(self.introductees, function (introductee) {
+          phoneNumbers.push(introductee.phone);
+        });
+
+        $cordovaSms.send(phoneNumbers, self.message, {})
           .then(function() {
             console.log('sent!');
           }, function(error) {
