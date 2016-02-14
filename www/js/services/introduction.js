@@ -4,9 +4,9 @@
 angular.module('services.introduction', [])
   .service('Introduction', IntroductionService);
 
-  IntroductionService.$inject = ['Contacts', 'Compose', '$cordovaSms'];
+  IntroductionService.$inject = ['Contacts', 'Compose', '$cordovaSms', '$state'];
 
-  function IntroductionService (Contacts, Compose, $cordovaSms) {
+  function IntroductionService (Contacts, Compose, $cordovaSms, $state) {
 
     var message, introductees = []
 
@@ -53,7 +53,7 @@ angular.module('services.introduction', [])
 
         $cordovaSms.send(phoneNumbers, self.message, {})
           .then(function() {
-            console.log('sent!');
+            $state.go('app.success');
           }, function(error) {
             console.log(error);
           });

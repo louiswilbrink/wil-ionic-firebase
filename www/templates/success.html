@@ -1,0 +1,16 @@
+<ion-view view-title="Success">
+  <ion-content>
+    <h1>You've helped two people!</h1>
+    <h2>Introductees</h2>
+    <ul>
+      <li ng-repeat="introductee in introductees">
+        {{ introductee.name }}
+      </li>
+    </ul>
+  </ion-content>
+  <a ng-click="navigate('app.contactsList')">
+    <div class="bar bar-footer bar-balanced">
+        <div class="title">Make More Introductions</div>
+    </div>
+  </a>
+</ion-view>

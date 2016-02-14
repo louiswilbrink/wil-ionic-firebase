@@ -8,7 +8,7 @@ angular.module('intro', ['ionic', 'controllers.contactsList',
     'controllers.messages', 'controllers.appCtrl', 'controllers.playlist', 
     'controllers.confirmation', 'services.introduction', 'services.contacts', 
     'services.messages', 'services.dummy', 'services.compose', 'ngCordova', 
-    'LocalStorageModule', 'filters.populate'])
+    'LocalStorageModule', 'filters.populate', 'controllers.success'])
 
 .run(function($ionicPlatform) {
 
@@ -48,14 +48,14 @@ angular.module('intro', ['ionic', 'controllers.contactsList',
     }
   })
   .state('app.messages', {
-      url: '/messages',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/messages.html',
-          controller: 'MessagesCtrl'
-        }
+    url: '/messages',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/messages.html',
+        controller: 'MessagesCtrl'
       }
-    })
+    }
+  })
   .state('app.contactsList', {
     url: '/contacts-list',
     views: {
@@ -84,12 +84,12 @@ angular.module('intro', ['ionic', 'controllers.contactsList',
       }
     }
   })
-  .state('app.single', {
-    url: '/playlists/:playlistId',
+  .state('app.success', {
+    url: '/success',
     views: {
       'menuContent': {
-        templateUrl: 'templates/playlist.html',
-        controller: 'PlaylistCtrl'
+        templateUrl: 'templates/success.html',
+        controller: 'SuccessCtrl'
       }
     }
   });
