@@ -15,6 +15,16 @@ $royal:                           #886aea !default;
 $dark:                            #444 !default;
 */
 
+$light:                           #fff !default;
+$light-primary:                   #30447B !default;
+$balanced:                        #1A2E64 !default;
+$positive:                        #091A4A !default;
+$dark:                            #031031 !default;
+$darkest:                         #010719 !default;
+
+$primary: #091a4a;
+$appFont: 'Roboto';
+
 // The path for our ionicons font files, relative to the built CSS in www/css
 $ionicons-font-path: "../lib/ionic/fonts" !default;
 
@@ -25,18 +35,82 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 // Application Style
 // TODO: refactor into separate files corresponding to pages/components.
 
+// Ionic Overrides
+
+.bar-stable.bar.bar-header {
+  background-color: $light-primary;
+}
+
+.title.title-center.header-item {
+  color: #fff;
+  font-family: $appFont;
+}
+
+.header-item {
+  >.left-buttons > .button {
+    color: #fff;
+  }
+  .icon.ion-ios-arrow-back {
+    color: #fff;
+  }
+  .back-text {
+    color: #fff;
+    font-family: $appFont;
+  }
+}
+
 // contacts-list.css.scss
 
 .contacts-list-container {
 
-  .introductees {
-    margin-left: auto;
-    margin-right: auto;
-    .introductee {
-      display: inline-block;
-      width: 44px;
-      height: 44px;
-      background: lightblue;
+  .introductees-container {
+    min-height: 110px;
+    padding-top: 30px;
+    .instruction {
+      text-align: center;
+      .icon-container {
+        opacity: 0.5;
+        border: 3px gray dashed;
+        width: 55px;
+        display: inline-block;
+        height: 55px;
+        border-radius: 25px;
+        overflow: hidden;
+        vertical-align: middle;
+        i:before {
+          font-size: 55px;
+          vertical-align: middle;
+          color: gray;
+        }
+      }
+      .text {
+        display: inline-block;
+        vertical-align: middle;
+        color: gray;
+        p {
+          text-align: left;
+          line-height: 14px;
+          font-size: 12px;
+          margin: 0 0 0 10px;
+        }
+      }
+    }
+    .introductees {
+      font-family: $appFont;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+      .introductee {
+        display: inline-block;
+        i:before {
+          font-size: 55px;
+        }
+        .initials {
+          position: relative;
+          top: -7px;
+          font-size: 8px;
+        }
+      }
     }
   }
 
@@ -46,7 +120,14 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
   .grey-out {
     opacity: 0.5;
   }
+
+  a { 
+    .bar.bar-footer {
+      background-color: $light-primary;
+      .title {
+        color: #fff;
+        font-family: $appFont;
+      }
+    }
+  }
 }
-
-
-

@@ -1,12 +1,20 @@
 <ion-view view-title="Select Contact" class="contacts-list-container">
   <ion-content>
-    <div class="instruction" ng-show="!introductees.length">
-      <p>Select the friends you'd like to connect</p>
-    </div>
     <div class="introductees-container">
+      <div class="instruction" ng-show="!introductees.length">
+        <div class="icon-container">
+          <i class="icon ion-person-add"></i>
+        </div>
+        <div class="text">
+          <p>Select the friends</p>
+          <p>you'd like to connect</p>
+        </div>
+      </div>
       <ul class="introductees">
         <li class="introductee" ng-repeat="contact in introductees" ng-click="removeContact(contact)">
-          <p>{{ contact.name }}</p>
+          <i class="icon ion-person"></i>
+          <p class="initials">{{ contact.name }}</p>
+          <!--<p class="initials">LW</p>-->
         </li>
       </ul>
     </div>
@@ -19,7 +27,7 @@
     </ion-list>
   </ion-content>
   <a href="#/app/messages">
-    <div class="bar bar-footer bar-balanced">
+    <div class="bar bar-footer">
         <div class="title">Add Message</div>
     </div>
   </a>
