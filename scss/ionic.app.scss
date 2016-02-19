@@ -131,3 +131,28 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
     }
   }
 }
+
+.confirmation-container {
+  
+  .introductees-container {
+    min-height: 110px;
+    padding-top: 30px;
+    .introductees {
+      font-family: $appFont;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+      .introductee {
+        display: inline-block;
+        i:before {
+          font-size: 55px;
+        }
+        .initials {
+          position: relative;
+          top: -7px;
+          font-size: 8px;
+        }
+      }
+    }
+  }
+}

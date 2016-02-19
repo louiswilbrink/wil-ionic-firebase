@@ -1,13 +1,14 @@
-<ion-view view-title="Confirmation">
+<ion-view view-title="Confirmation" class="confirmation-container">
   <ion-content>
-    <h1>Confirmation</h1>
-    <h2>Introductees</h2>
-    <ul>
-      <li ng-repeat="introductee in introductees">
-        {{ introductee.name }}
-      </li>
-    </ul>
-    <h2>Message</h2>
+    <div class="introductees-container">
+      <ul class="introductees">
+        <li class="introductee" ng-repeat="contact in introductees" ng-click="removeContact(contact)">
+          <i class="icon ion-person"></i>
+          <p class="initials">{{ contact.name }}</p>
+          <!--<p class="initials">LW</p>-->
+        </li>
+      </ul>
+    </div>
     <div class="message card">
       <div class="item item-text-wrap">
         {{ message }}

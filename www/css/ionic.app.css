@@ -9774,7 +9774,9 @@ a.button {
       .contacts-list-container .introductees-container .introductees .introductee i:before {
         font-size: 55px; }
       .contacts-list-container .introductees-container .introductees .introductee .initials {
-        position: relative; }
+        position: relative;
+        top: -7px;
+        font-size: 8px; }
 
 .contacts-list-container .grey-out {
   opacity: 0.5; }
@@ -9784,3 +9786,20 @@ a.button {
   .contacts-list-container a .bar.bar-footer .title {
     color: #fff;
     font-family: "Roboto"; }
+
+.confirmation-container .introductees-container {
+  min-height: 110px;
+  padding-top: 30px; }
+  .confirmation-container .introductees-container .introductees {
+    font-family: "Roboto";
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center; }
+    .confirmation-container .introductees-container .introductees .introductee {
+      display: inline-block; }
+      .confirmation-container .introductees-container .introductees .introductee i:before {
+        font-size: 55px; }
+      .confirmation-container .introductees-container .introductees .introductee .initials {
+        position: relative;
+        top: -7px;
+        font-size: 8px; }
