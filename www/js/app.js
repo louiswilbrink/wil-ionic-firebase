@@ -47,6 +47,14 @@ angular.module('intro', ['ionic', 'controllers.contactsList',
       }
     }
   })
+  .state('app.privacy', {
+    url: '/privacy',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/privacy.html'
+      }
+    }
+  })
   .state('app.messages', {
     url: '/messages',
     views: {

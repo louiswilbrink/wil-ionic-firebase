@@ -9720,8 +9720,14 @@ a.button {
   -webkit-transition-duration: 0s;
   transition-duration: 0s; }
 
-.contacts-list-container .introductees .introductee {
-  background: lightblue; }
+.contacts-list-container .introductees {
+  margin-left: auto;
+  margin-right: auto; }
+  .contacts-list-container .introductees .introductee {
+    display: inline-block;
+    width: 44px;
+    height: 44px;
+    background: lightblue; }
 
 .contacts-list-container .grey-out {
   opacity: 0.5; }
