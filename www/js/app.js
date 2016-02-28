@@ -8,7 +8,8 @@ angular.module('intro', ['ionic', 'controllers.contactsList',
     'controllers.messages', 'controllers.appCtrl', 'controllers.playlist', 
     'controllers.confirmation', 'services.introduction', 'services.contacts', 
     'services.messages', 'services.dummy', 'services.compose', 'ngCordova', 
-    'LocalStorageModule', 'filters.populate', 'controllers.success'])
+    'LocalStorageModule', 'filters.populate', 'controllers.success', 
+    'services.db', 'controllers.testButton'])
 
 .run(function($ionicPlatform) {
 
@@ -61,6 +62,15 @@ angular.module('intro', ['ionic', 'controllers.contactsList',
       'menuContent': {
         templateUrl: 'templates/messages.html',
         controller: 'MessagesCtrl'
+      }
+    }
+  })
+  .state('app.testButton', {
+    url: '/test-button',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/test-button.html',
+        controller: 'TestButtonCtrl'
       }
     }
   })

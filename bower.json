@@ -8,6 +8,8 @@
     "ngCordova": "~0.1.23-alpha",
     "angular-local-storage": "~0.2.3",
     "lodash": "~4.2.1",
-    "Ionicons": "ionicons#^2.0.1"
+    "Ionicons": "ionicons#^2.0.1",
+    "firebase": "^2.4.1",
+    "angularfire": "^1.1.4"
   }
 }
