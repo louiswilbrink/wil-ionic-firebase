@@ -6,5 +6,6 @@ platforms/
 plugins/
 www/bower_components/
 www/data/
+www/config/
 *.swp
 
