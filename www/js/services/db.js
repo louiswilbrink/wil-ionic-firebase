@@ -14,6 +14,18 @@ angular.module('services.db', ['firebase'])
     // reference.
     var ref = new Firebase('https://introgo-prod.firebaseio.com/');
     var auth = $firebaseAuth(ref);
+    var isAuth = false;
+
+    auth.$onAuth(function (authData) {
+      console.log('Auth State Change:', authData);
+
+      if (!authData) {
+        isAuth = false;
+      }
+      else if (authData.uid) {
+        isAuth = true;
+      }
+    });
 
     /* PRIVATE METHODS */
 
@@ -31,7 +43,7 @@ angular.module('services.db', ['firebase'])
         phone: '1234567890',
         uuid: 'asdf1234poiu0987',
         email: userInfo.email,
-        connections: [{
+        introductions: [{
           introductees: [{ dummy: 'dummy' }],
           message: 'dummy message'
         }],
@@ -94,6 +106,9 @@ angular.module('services.db', ['firebase'])
       updateLastName: null,
       updatePhone: null,
       updateEmail: null,
+      isAuth: function () {
+        return isAuth;
+      },
       logout: function () {
         return ref.unauth();
       }

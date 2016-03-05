@@ -2,6 +2,13 @@ angular.module('controllers.testButton', [])
 .controller('TestButtonCtrl', function($scope, Db) {
 
   $scope.createUser = Db.createUser;
+  $scope.logout     = Db.logout;
+
+  $scope.isAuth     = function () {
+    console.log(Db.isAuth());
+  };
+
+  console.log($scope);
 
   $scope.login = function (email, password) {
     Db.login({
