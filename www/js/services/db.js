@@ -15,6 +15,9 @@ angular.module('services.db', ['firebase'])
     var ref = new Firebase('https://introgo-prod.firebaseio.com/');
     var auth = $firebaseAuth(ref);
     var isAuth = false;
+    
+    // User variables.
+    var uid, email;
 
     auth.$onAuth(function (authData) {
       console.log('Auth State Change:', authData);
@@ -34,10 +37,10 @@ angular.module('services.db', ['firebase'])
       var isUserAdded = $q.defer();
 
       // Create user reference using uid.
-      var user = new Firebase('https://introgo-prod.firebaseio.com/users/' + userInfo.uid);
+      var userRef = new Firebase('https://introgo-prod.firebaseio.com/users/' + userInfo.uid);
 
       // Add user to db.
-      user.set({
+      userRef.set({
         firstName: 'Louis',
         lastName: 'Wilbrink',
         phone: '1234567890',
@@ -64,9 +67,12 @@ angular.module('services.db', ['firebase'])
     }
 
     function getLoginInfo (authData) {
+      uid = authData.uid;
+      email = authData.password.email;
+
       return $q.when({
-        uid: authData.uid,
-        email: authData.password.email
+        uid: uid,
+        email: email
       });
     }
 
@@ -97,15 +103,57 @@ angular.module('services.db', ['firebase'])
       });
     }
 
+    function checkPassword (password) {
+      //return auth.$getAuth().then(function authData)
+    }
+
+    // Remove the user object from firebase db.
+    function removeUser (authData) {
+
+      // Create user reference using uid.
+      var userRef = new Firebase('https://introgo-prod.firebaseio.com/users/' + authData.uid);
+      var user = $firebaseObject(userRef);
+
+      return user.$remove().then(function () {
+        user.$destroy(); // removes listeners (which also respond to auth changes).
+      }); 
+    }
+
+    function terminateAccount (email, password) {
+
+      return login({ // Check credentials.
+        email: email, 
+        password: password
+      })
+      .then(removeUser)  // Receives authData.
+      .then(function () {
+        return auth.$removeUser({
+          email: email,
+          password: password
+        });
+      });
+    }
+
     return {
       createUser: createUser,
       login: login,
-      removeUser: null,
+      removeUser: removeUser,
+      terminateAccount: terminateAccount,
       addIntroduction: null,
       updateFirstName: null,
       updateLastName: null,
       updatePhone: null,
       updateEmail: null,
+      getUid: function () {
+        return uid;
+      },
+      getEmail: function () {
+        return email;
+      },
+      getAuth: function () {
+        var authData = auth.$getAuth();
+        console.log(authData);
+      },
       isAuth: function () {
         return isAuth;
       },

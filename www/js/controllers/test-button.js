@@ -8,7 +8,13 @@ angular.module('controllers.testButton', [])
     console.log(Db.isAuth());
   };
 
-  console.log($scope);
+  $scope.getAuth = Db.getAuth;
+
+  $scope.terminateAccount = function (email, password) {
+    Db.terminateAccount(email, password).catch(function (error) {
+      console.log('error terminating', error);
+    });
+  };
 
   $scope.login = function (email, password) {
     Db.login({
