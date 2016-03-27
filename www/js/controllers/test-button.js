@@ -4,10 +4,6 @@ angular.module('controllers.testButton', [])
   $scope.createUser = Db.createUser;
   $scope.logout     = Db.logout;
 
-  $scope.isAuth     = function () {
-    console.log(Db.isAuth());
-  };
-
   $scope.getAuth = Db.getAuth;
 
   $scope.terminateAccount = function (email, password) {

@@ -14,20 +14,12 @@ angular.module('services.db', ['firebase'])
     // reference.
     var ref = new Firebase('https://introgo-prod.firebaseio.com/');
     var auth = $firebaseAuth(ref);
-    var isAuth = false;
     
     // User variables.
     var uid, email;
 
     auth.$onAuth(function (authData) {
       console.log('Auth State Change:', authData);
-
-      if (!authData) {
-        isAuth = false;
-      }
-      else if (authData.uid) {
-        isAuth = true;
-      }
     });
 
     /* PRIVATE METHODS */
@@ -153,9 +145,7 @@ angular.module('services.db', ['firebase'])
       getAuth: function () {
         var authData = auth.$getAuth();
         console.log(authData);
-      },
-      isAuth: function () {
-        return isAuth;
+        return authData;
       },
       logout: function () {
         return ref.unauth();
